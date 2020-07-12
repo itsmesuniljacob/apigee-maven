@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<VerifyJWT async="false" continueOnError="false" enabled="true" name="auth0-Verify-RS256">
+    <DisplayName>auth0</DisplayName>
+    <Algorithm>RS256</Algorithm>
+    <!--<Source>request.header.Authorization</Source>-->
+    <!--<IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>-->
+    <PublicKey>
+        <JWKS uri="https://osmos.auth0.com/.well-known/jwks.json"/>
+    </PublicKey>
+    <!--<Subject>HKcl4XOirEAZsT9Pm9DC6WPraoZQgQV2@clients</Subject>-->
+    <Issuer>https://osmos.auth0.com/</Issuer>
+    <Audience>https://osmos-dev.osmos.services</Audience>
+    <!--<AdditionalClaims>-->
+    <!--    <Claim name='https://osmos.services'>https://osmos.services</Claim>-->
+    <!--</AdditionalClaims>-->
+</VerifyJWT>

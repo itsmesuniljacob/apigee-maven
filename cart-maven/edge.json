@@ -1,0 +1,59 @@
+{
+    "version": "1.0",
+    "envConfig": {
+        "prod": {
+          "targetServers": [
+              {
+                "name" : "cart",
+                "host" : "wwww.osmos.services",
+                "isEnabled" : true,
+                "port" : 443,
+                "sSLInfo": {
+                    "enabled": "true",
+                    "clientAuthEnabled": "false",
+                    "keyStore": "",
+                    "trustStore": "",
+                    "keyAlias": "",
+                    "ignoreValidationErrors": "false"
+                  }
+              }
+          ],
+          "virtualHosts": [],
+          "kvms": [
+                {
+                    "name": "kvm-credentials",
+                    "entry": [
+                        {
+                            "name": "username",
+                            "value": "sunil"
+                        },
+                        {
+                            "name": "password",
+                            "value": "Changeme@123"
+                        }
+                    ]
+                }
+            ],
+          "resourcefiles":[],
+          "flowhooks":[]
+        },
+        "test": {
+            "targetServers": [
+                {
+                  "name" : "cart",
+                  "host" : "cart-dev.osmos.services",
+                  "isEnabled" : true,
+                  "port" : 443,
+                  "sSLInfo": {
+                      "enabled": "true",
+                      "clientAuthEnabled": "false",
+                      "keyStore": "",
+                      "trustStore": "",
+                      "keyAlias": "",
+                      "ignoreValidationErrors": "false"
+                    }
+                }
+            ]
+        }
+    }   
+}

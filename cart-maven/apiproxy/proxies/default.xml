@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+    <Description>Cart and Lists API</Description>
+    <PreFlow name="PreFlow">
+        <Request>
+            <Step>
+                <!--<Name>auth0-Verify-RS256</Name>-->
+                <Name>prod-auth0</Name>
+            </Step>
+            <Step>
+                <Condition>environment.name="test"</Condition>
+                <Name>auth0-Verify-RS256</Name>
+            </Step>
+        </Request>
+        <Response/>
+    </PreFlow>
+    <Flows>
+        <Flow name="createUsingPOST">
+            <Condition>(proxy.pathsuffix MatchesPath "/v1/lists") and (request.verb = "POST")</Condition>
+            <Description>Create List.</Description>
+            <Request/>
+            <Response/>
+        </Flow>
+        <Flow name="viewListsUsingGET">
+            <Condition>(proxy.pathsuffix MatchesPath "/v1/lists") and (request.verb = "GET")</Condition>
+            <Description>View Lists.</Description>
+            <Request/>
+            <Response/>
+        </Flow>
+        <Flow name="viewListByIdUsingGET">
+            <Condition>(proxy.pathsuffix MatchesPath "/v1/lists/{listId}") and (request.verb = "GET")</Condition>
+            <Description>ViewListById.</Description>
+            <Request/>
+            <Response/>
+        </Flow>
+        <Flow name="removeListsUsingDELETE">
+            <Condition>(proxy.pathsuffix MatchesPath "/v1/lists/{listId}") and (request.verb = "DELETE")</Condition>
+            <Description>RemoveLists.</Description>
+            <Request/>
+            <Response/>
+        </Flow>
+        <Flow name="getListCount">
+            <Condition>(proxy.pathsuffix MatchesPath "/v1/lists/count/{listId}") and (request.verb = "GET")</Condition>
+            <Description>Get List Count.</Description>
+            <Request/>
+            <Response/>
+        </Flow>
+        <Flow name="viewListByUserIdAndTypeUsingGET">
+            <Condition>(proxy.pathsuffix MatchesPath "/v1/lists/type/{listType}") and (request.verb = "GET")</Condition>
+            <Description>Get List By UserId And Type.</Description>
+            <Request/>
+            <Response/>
+        </Flow>
+        <Flow name="addToListsByTypeUsingPUT">
+            <Condition>(proxy.pathsuffix MatchesPath "/v1/lists/type/{listType}") and (request.verb = "PUT")</Condition>
+            <Description>Add To List By Type.</Description>
+            <Request/>
+            <Response/>
+        </Flow>
+        <Flow name="addToListsUsingPUT">
+            <Condition>(proxy.pathsuffix MatchesPath "/v1/lists/{listId}/lines") and (request.verb = "PUT")</Condition>
+            <Description>AddToLists.</Description>
+            <Request/>
+            <Response/>
+        </Flow>
+        <Flow name="removeFromListsByOfferingIdUsingDELETE">
+            <Condition>(proxy.pathsuffix MatchesPath "/v1/lists/{listId}/lines") and (request.verb = "DELETE")</Condition>
+            <Description>RemoveFromListsByOfferingId.</Description>
+            <Request/>
+            <Response/>
+        </Flow>
+        <Flow name="removeFromListsByLineIdUsingDELETE">
+            <Condition>(proxy.pathsuffix MatchesPath "/v1/lists/{listId}/listLines/{listLineId}") and (request.verb = "DELETE")</Condition>
+            <Description>Remove From Lists By LineId.</Description>
+            <Request/>
+            <Response/>
+        </Flow>
+        <Flow name="attachUserUsingPUT">
+            <Condition>(proxy.pathsuffix MatchesPath "/v1/lists/{listId}/attachUser") and (request.verb = "POST")</Condition>
+            <Description>AttachUser.</Description>
+            <Request/>
+            <Response/>
+        </Flow>
+        <Flow name="detachUserDELETE">
+            <Condition>(proxy.pathsuffix MatchesPath "/v1/lists/{listId}/detachUser/{userId}") and (request.verb = "DELETE")</Condition>
+            <Description>DetachUser.</Description>
+            <Request/>
+            <Response/>
+        </Flow>
+        <Flow name="findUsingGET">
+            <Condition>(proxy.pathsuffix MatchesPath "/v1/lists/configs") and (request.verb = "GET")</Condition>
+            <Description>Find Config.</Description>
+            <Request/>
+            <Response/>
+        </Flow>
+        <Flow name="createUsingPUT">
+            <Condition>(proxy.pathsuffix MatchesPath "/v1/lists/configs") and (request.verb = "PUT")</Condition>
+            <Description>Add/Update list config for a tenant.</Description>
+            <Request/>
+            <Response/>
+        </Flow>
+        <Flow name="deleteConfigUsingDELETE">
+            <Condition>(proxy.pathsuffix MatchesPath "/v1/lists/configs") and (request.verb = "DELETE")</Condition>
+            <Description>Delete.</Description>
+            <Request/>
+            <Response/>
+        </Flow>
+        <Flow name="addToCartUsingPost">
+            <Condition>(proxy.pathsuffix MatchesPath "/v1/carts/items") and (request.verb = "POST")</Condition>
+            <Description>Add an item to a cart.</Description>
+            <Request/>
+            <Response/>
+        </Flow>
+        <Flow name="addToExistingCartUsingPost">
+            <Condition>(proxy.pathsuffix MatchesPath "/v1/carts/{cartId}/items") and (request.verb = "POST")</Condition>
+            <Description>Add an item to an existing cart.</Description>
+            <Request/>
+            <Response/>
+        </Flow>
+        <Flow name="viewCartUsingPOST">
+            <Condition>(proxy.pathsuffix MatchesPath "/v1/carts/{cartId}/items/fetch") and (request.verb = "POST")</Condition>
+            <Description>View Cart With/Without Recalculating (Price, Avilability, Catalog).</Description>
+            <Request/>
+            <Response/>
+        </Flow>
+        <Flow name="viewCartByAccountIdUsingGET">
+            <Condition>(proxy.pathsuffix MatchesPath "/v1/carts/account/{accountId}") and (request.verb = "GET")</Condition>
+            <Description>View Cart With/Without Recalculating (Price, Availability, Catalog).</Description>
+            <Request/>
+            <Response/>
+        </Flow>
+        <Flow name="viewCartUsingGET">
+            <Condition>(proxy.pathsuffix MatchesPath "/v1/carts/{cartId}") and (request.verb = "GET")</Condition>
+            <Description>View Cart With/Without Recalculating (Price, Avilability, Catalog).</Description>
+            <Request/>
+            <Response/>
+        </Flow>
+        <Flow name="cartLineQuantityUpdate">
+            <Condition>(proxy.pathsuffix MatchesPath "/v1/carts/{cartId}") and (request.verb = "PATCH")</Condition>
+            <Description>Update quantity of cartLine.</Description>
+            <Request/>
+            <Response/>
+        </Flow>
+        <Flow name="removeCartUsingDELETE">
+            <Condition>(proxy.pathsuffix MatchesPath "/v1/carts/{cartId}") and (request.verb = "DELETE")</Condition>
+            <Description>Remove Cart.</Description>
+            <Request/>
+            <Response/>
+        </Flow>
+        <Flow name="removeItemUsingDELETE">
+            <Condition>(proxy.pathsuffix MatchesPath "/v1/carts/{cartId}/cartLines/{cartLineId}") and (request.verb = "DELETE")</Condition>
+            <Description>Remove Item.</Description>
+            <Request/>
+            <Response/>
+        </Flow>
+        <Flow name="mergeCart">
+            <Condition>(proxy.pathsuffix MatchesPath "/v1/carts/{cartId}/account/{accountId}/merge") and (request.verb = "POST")</Condition>
+            <Description>Merge guest cart to identified cart.</Description>
+            <Request/>
+            <Response/>
+        </Flow>
+        <Flow name="cartCountUsingGET">
+            <Condition>(proxy.pathsuffix MatchesPath "/v1/carts/count/{cartId}") and (request.verb = "GET")</Condition>
+            <Description>Cart Count.</Description>
+            <Request/>
+            <Response/>
+        </Flow>
+        <Flow name="updateCartWithDeliveryGroup">
+            <Condition>(proxy.pathsuffix MatchesPath "/v1/carts/{cartId}/deliveryGroups") and (request.verb = "PUT")</Condition>
+            <Description>Update a cart with delivery group.</Description>
+            <Request/>
+            <Response/>
+        </Flow>
+        <Flow name="removeDeliveryGroups">
+            <Condition>(proxy.pathsuffix MatchesPath "/v1/carts/{cartId}/deliveryGroups") and (request.verb = "DELETE")</Condition>
+            <Description>Remove deliveryGroups from cart.</Description>
+            <Request/>
+            <Response/>
+        </Flow>
+        <Flow name="updateCartWithUser">
+            <Condition>(proxy.pathsuffix MatchesPath "/v1/carts/{cartId}/users") and (request.verb = "PUT")</Condition>
+            <Description>Update a cart with user.</Description>
+            <Request/>
+            <Response/>
+        </Flow>
+        <Flow name="putPayment">
+            <Condition>(proxy.pathsuffix MatchesPath "/v1/carts/{cartId}/payments") and (request.verb = "PUT")</Condition>
+            <Description>Add payment to cart.</Description>
+            <Request/>
+            <Response/>
+        </Flow>
+        <Flow name="createOrderUsingPOST">
+            <Condition>(proxy.pathsuffix MatchesPath "/v1/carts/{cartId}/order") and (request.verb = "POST")</Condition>
+            <Description>Create Order From Cart.</Description>
+            <Request/>
+            <Response/>
+        </Flow>
+        <Flow name="addCouponToCart">
+            <Condition>(proxy.pathsuffix MatchesPath "/v1/carts/{cartId}/coupon") and (request.verb = "PUT")</Condition>
+            <Description>Add Coupon.</Description>
+            <Request/>
+            <Response/>
+        </Flow>
+        <Flow name="removeCouponUsingDELETE">
+            <Condition>(proxy.pathsuffix MatchesPath "/v1/carts/{cartId}/coupon/remove") and (request.verb = "PUT")</Condition>
+            <Description>Remove coupon.</Description>
+            <Request/>
+            <Response/>
+        </Flow>
+        <Flow name="viewCartConfig">
+            <Condition>(proxy.pathsuffix MatchesPath "/v1/carts/configs") and (request.verb = "GET")</Condition>
+            <Description>View Tenant Specific cart config.</Description>
+            <Request/>
+            <Response/>
+        </Flow>
+        <Flow name="putCartConfig">
+            <Condition>(proxy.pathsuffix MatchesPath "/v1/carts/configs") and (request.verb = "PUT")</Condition>
+            <Description>Add/Update cart config for a tenant.</Description>
+            <Request/>
+            <Response/>
+        </Flow>
+    </Flows>
+    <PostFlow name="PostFlow">
+        <Request/>
+        <Response/>
+    </PostFlow>
+    <HTTPProxyConnection>
+        <BasePath>/cart-api</BasePath>
+        <!--<VirtualHost>default</VirtualHost>-->
+        <VirtualHost>secure</VirtualHost>
+        <!--<VirtualHost>falabella</VirtualHost>-->
+    </HTTPProxyConnection>
+    <RouteRule name="prod">
+        <Condition>environment.name="prod"</Condition>
+        <TargetEndpoint>prod</TargetEndpoint>
+    </RouteRule>
+    <RouteRule name="default">
+        <TargetEndpoint>default</TargetEndpoint>
+    </RouteRule>
+</ProxyEndpoint>

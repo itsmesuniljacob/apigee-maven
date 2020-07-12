@@ -5,11 +5,12 @@
     <artifactId>parent-pom</artifactId>
     <packaging>pom</packaging>
     <version>1.0</version>
+    <name>cart-${deployment.suffix}-v1</name>
     <pluginRepositories>
         <pluginRepository>
             <id>central</id>
             <name>Maven Plugin Repository</name>
-            <url>http://repo1.maven.org/maven2</url>
+            <url>https://repo1.maven.org/maven2</url>
             <layout>default</layout>
             <snapshots>
                 <enabled>false</enabled>
@@ -66,6 +67,28 @@
                     </execution>
                 </executions>
             </plugin>
+            <!-- cleaning dirs -->
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>2.5</version>
+
+				<executions>
+					<execution>
+						<id>auto-clean-init</id>
+						<phase>initialize</phase>
+						<goals>
+							<goal>clean</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>auto-clean-install</id>
+						<phase>install</phase>
+						<goals>
+							<goal>clean</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
             <plugin>
                 <groupId>com.apigee.edge.config</groupId>
                 <artifactId>apigee-config-maven-plugin</artifactId>
@@ -139,17 +162,10 @@
                 <apigee.profile>test</apigee.profile>
                 <apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
                 <apigee.apiversion>v1</apigee.apiversion>
-                <apigee.org>onlineman477-eval</apigee.org>
-                <apigee.env>prod</apigee.env>
+                <apigee.org>sjacob-eval</apigee.org>
+                <apigee.env>test</apigee.env>
                 <apigee.username>${username}</apigee.username>
                 <apigee.password>${password}</apigee.password>
-                <apigee.authtype>basic</apigee.authtype> <!-- optional: oauth|basic(default) -->
-                <apigee.tokenurl>https://login.apigee.com/oauth/token</apigee.tokenurl> <!-- optional: oauth -->
-                <apigee.mfatoken>${mfatoken}</apigee.mfatoken> <!-- optional: mfa -->
-                <apigee.clientid>${clientId}</apigee.clientid> <!-- optional: Oauth Client Id - Default is edgecli-->
-                <apigee.clientsecret>${clientSecret}</apigee.clientsecret> <!-- optional: Oauth Client Secret Default is edgeclisecret-->
-                <apigee.bearer>${bearer}</apigee.bearer> <!-- optional: Bearer token override -->
-                <apigee.refresh>${refresh}</apigee.refresh> <!-- optional: Refresh token override -->
             </properties>
         </profile>
         <profile>
@@ -158,17 +174,11 @@
                 <apigee.profile>prod</apigee.profile>
                 <apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
                 <apigee.apiversion>v1</apigee.apiversion>
-                <apigee.org>onlineman477-eval</apigee.org>
+                <apigee.org>sjacob-eval</apigee.org>
                 <apigee.env>prod</apigee.env>
                 <apigee.username>${username}</apigee.username>
                 <apigee.password>${password}</apigee.password>
-                <apigee.authtype>oauth</apigee.authtype> <!-- optional: oauth|basic(default) -->
-                <apigee.tokenurl>https://login.apigee.com/oauth/token</apigee.tokenurl> <!-- optional: oauth -->
-                <apigee.mfatoken>${mfatoken}</apigee.mfatoken> <!-- optional: mfa -->
-                <apigee.clientid>${clientId}</apigee.clientid> <!-- optional: Oauth Client Id - Default is edgecli-->
-                <apigee.clientsecret>${clientSecret}</apigee.clientsecret> <!-- optional: Oauth Client Secret Default is edgeclisecret-->
-                <apigee.bearer>${bearer}</apigee.bearer> <!-- optional: Bearer token override -->
-                <apigee.refresh>${refresh}</apigee.refresh> <!-- optional: Refresh token override -->
+    
             </properties>
         </profile>
     </profiles>
@@ -181,10 +191,3 @@
         </dependency>
     </dependencies>
 </project>
-
-
-
-
-
-
-

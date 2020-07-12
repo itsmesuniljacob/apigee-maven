@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<VerifyJWT async="false" continueOnError="false" enabled="true" name="prod-auth0">
+    <DisplayName>prod-auth0</DisplayName>
+    <Algorithm>RS256</Algorithm>
+    <PublicKey>
+        <JWKS uri="https://osmos.auth0.com/.well-known/jwks.json"/>
+    </PublicKey>
+    <Issuer>https://osmos.auth0.com/</Issuer>
+    <Audience>https://osmos.services</Audience>
+</VerifyJWT>
